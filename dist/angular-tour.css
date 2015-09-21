@@ -53,21 +53,21 @@
     .tour-tip .tour-arrow.tt-top {
       border-style: solid;
       bottom: -27px;
-      border-color: #1C252E transparent transparent !important; }
+      border-color: #1C252E transparent transparent; }
     .tour-tip .tour-arrow.tt-bottom {
       border-style: solid;
       top: -28px;
-      border-color: transparent transparent #1C252E !important; }
+      border-color: transparent transparent #1C252E; }
     .tour-tip .tour-arrow.tt-right {
       border-style: solid;
       left: -27px;
       top: 28px;
-      border-color: transparent #1C252E transparent transparent !important; }
+      border-color: transparent #1C252E transparent transparent; }
     .tour-tip .tour-arrow.tt-left {
       border-style: solid;
       left: 100%;
       top: 28px;
-      border-color: transparent transparent transparent #1c252e !important; }
+      border-color: transparent transparent transparent #1c252e; }
   .tour-tip .tour-content-wrapper {
     padding: 1.125em 1.25em 1.5em; }
     .tour-tip .tour-content-wrapper .button {

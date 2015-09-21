@@ -1,6 +1,6 @@
 /**
  * An AngularJS directive for showcasing features of your website
- * @version v0.1.1 - 2015-09-14
+ * @version v0.1.1 - 2015-09-16
  * @link https://github.com/DaftMonk/angular-tour
  * @author Tyler Henkel
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -24,7 +24,8 @@
     animation: true,
     nextLabel: 'Next',
     scrollSpeed: 500,
-    offset: 28
+    offset: 28,
+    bgColor: '#1C252E'
   }).controller('TourController', [
     '$scope',
     'orderedList',
@@ -146,6 +147,15 @@
           attrs.$observe('tourtipOffset', function (val) {
             scope.ttOffset = parseInt(val, 10) || tourConfig.offset;
           });
+          if (attrs.bgColor) {
+            scope.bgColor = attrs.bgColor;
+          }
+          if (attrs.positionTop) {
+            scope.positionTop = attrs.positionTop;
+          }
+          if (attrs.positionLeft) {
+            scope.positionLeft = attrs.positionLeft;
+          }
           scope.ttOpen = false;
           scope.ttAnimation = tourConfig.animation;
           scope.index = parseInt(attrs.tourtipStep, 10);
@@ -167,10 +177,10 @@
               return;
             }
             /*if(scope.ttAnimation)
-            tourtip.fadeIn();
-          else {
-            tourtip.css({ display: 'block' });
-          }*/
+           tourtip.fadeIn();
+           else {
+           tourtip.css({ display: 'block' });
+           }*/
             tourtip.css({ display: 'block' });
             tourtip.removeClass('ng-hide');
             // Append it to the dom
@@ -247,6 +257,22 @@
       scope: true,
       restrict: 'EA',
       link: function (scope, element, attrs) {
+        if (scope.bgColor) {
+          switch (scope.ttPlacement) {
+          case 'right':
+            element.find('span').css('border-color', 'transparent ' + scope.bgColor + ' transparent transparent');
+            break;
+          case 'bottom':
+            element.find('span').css('border-color', 'transparent transparent ' + scope.bgColor + ' transparent');
+            break;
+          case 'left':
+            element.find('span').css('border-color', 'transparent transparent transparent ' + scope.bgColor);
+            break;
+          default:
+            element.find('span').css('border-color', scope.bgColor + ' transparent transparent transparent');
+            break;
+          }
+        }
       }
     };
   }).factory('orderedList', function () {
